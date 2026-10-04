@@ -4,10 +4,11 @@
 
 ## 资产类型
 
-| 类型 | 目录 | 内容 | 消费方式 |
-|---|---|---|---|
-| 知识包 | `packs/` | 某 app 的事实性业务知识：screens（页面结构）、entities（实体字段）、flows（流程）、vocab（词表与图标）、states（状态判别式）、guide（使用说明） | 拷入基座 `knowledge/`，运行时自动加载；AI 亦可直接读取获得业务背景 |
-| 插件 | `plugins/` | 策略与编排：评分、比价、推荐等判断逻辑 | 拷入基座 `plugins/`，运行时热加载；`requires` 字段声明依赖的知识包 |
+| 目录 | 内容 | 消费方式 |
+|---|---|---|
+| `plugins/` | 某个使用场景的策略与编排：评分、比价、推荐、流程封装 | 拷入基座 `plugins/`，运行时热加载 |
+
+插件**自包含**：所需的一切逻辑与定位信息都在插件内，不依赖外部知识库。
 
 ## 场景分类
 
@@ -87,11 +88,10 @@ MIT。
 
 ---
 
-**EN**: Community catalog of knowledge packs and plugins for
+**EN**: Community catalog of plugins for
 [mobile-agent-harness](https://github.com/Aelindra/mobile-agent-harness).
-Knowledge packs hold factual, per-app business knowledge (screens / entities /
-flows / vocab / states); plugins hold strategy and orchestration and declare
-required packs. Scenario directories above form the taxonomy; all content is
+Plugins are self-contained strategy and orchestration packages for specific
+use cases on Android apps. Scenario directories above form the taxonomy; all content is
 contributed. Intended for low-frequency personal use on your own device. Risk
 labels are mandatory (`low` / `account` / `tos-grey`). Takedown policy: report
 an issue and the entry is removed. No anti-detection, no account abuse, no root
