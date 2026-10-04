@@ -29,13 +29,17 @@ packs/ 与 plugins/ 下的场景目录：
 
 ### 知识包
 
+知识包分两层：**业务语义**（设备无关）与**设备变体**（每个客户端一份映射）。同一 app 在手机和电脑上是同一份业务知识，只有像素与 IO 映射不同。
+
 ```
 packs/<场景>/<app>/
   pack.json5     # 必需：name（"<场景slug>.<appslug>"）、version、game（包名）、
                  # risk（low|account|tos-grey）
-                 # 可选：guide、atlas、flows、states
+                 # 可选：guide、flows、variants（["android","pc",...]）
+  business.md    # 设备无关：实体、规则、流程图、词表（换设备不需要重写这层）
   guide.md       # 使用时机、流程、已知局限
-  templates/     # 可选：图标图集（<game>/manifest.json + *.png）
+  variants/      # 设备变体：variants/android|pc/{templates,states}
+                 # templates/ = 图标图集（<game>/manifest.json + *.png）
 ```
 
 要求：
